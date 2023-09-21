@@ -53,7 +53,10 @@ inicio = 'A'
 objetivo = 'X'
 resultado = busqueda_uniforme(grafo, inicio, objetivo)
 
+
 if resultado:
-    print(f"El camino más corto desde {inicio} a {objetivo} es: {resultado} con costo total {len(resultado) - 1}")
+    # Imprimir el camino más corto y su costo total
+    costo_total = sum(grafo[resultado[i - 1]][resultado[i]] for i in range(1, len(resultado)))
+    print(f"El camino más corto desde {inicio} a {objetivo} es: {resultado} con costo total {costo_total}")
 else:
     print(f"No se encontró un camino desde {inicio} a {objetivo}")
