@@ -1,4 +1,4 @@
-import heapq
+import heapq # proporciona funciones para trabajar con colas de prioridad
 
 class Nodo:
     def __init__(self, estado, costo, camino):
@@ -12,7 +12,7 @@ class Nodo:
 def busqueda_uniforme(grafo, inicio, objetivo):
     # Inicializar la cola de prioridad con el nodo de inicio
     cola_prioridad = []
-    heapq.heappush(cola_prioridad, Nodo(inicio, 0, [inicio]))
+    heapq.heappush(cola_prioridad, Nodo(inicio, 0, [inicio])) # agrega un elemento a una cola de prioridad. En el código que proporcionaste, el elemento que se agrega es un nodo de la clase Nodo
 
     # Inicializar un conjunto de nodos visitados
     visitados = set()
@@ -34,6 +34,7 @@ def busqueda_uniforme(grafo, inicio, objetivo):
                 nuevo_costo = nodo_actual.costo + costo
                 nuevo_camino = nodo_actual.camino + [sucesor]
                 heapq.heappush(cola_prioridad, Nodo(sucesor, nuevo_costo, nuevo_camino))
+                print(nuevo_camino,nuevo_costo)
 
     # Si no se encuentra un camino, retornar None
     return None
@@ -56,6 +57,7 @@ resultado = busqueda_uniforme(grafo, inicio, objetivo)
 
 if resultado:
     # Imprimir el camino más corto y su costo total
+    print(resultado[0])
     costo_total = sum(grafo[resultado[i - 1]][resultado[i]] for i in range(1, len(resultado)))
     print(f"El camino más corto desde {inicio} a {objetivo} es: {resultado} con costo total {costo_total}")
 else:
